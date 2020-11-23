@@ -8,10 +8,9 @@ export const Input = {
     delete attrs.class;
     return m('input', {
       oninput: ({ target: { value } }) => (field.value = value),
-      class:
-        `${
-          field.requiresValidation ? (field.isValid ? field.successClass : field.failClass) : ''
-        } ${attrs.class}${attrs.fail ? ` ${field.failClass}` : ''}` + ` ${cls}`,
+      class: `${
+        field.requiresValidation ? (field.isValid ? field.successClass : field.failClass) : ''
+      } ${attrs.fail ? field.failClass : ''} ${cls}`,
       placeholder: field.name,
       value: field.value,
       ...attrs
