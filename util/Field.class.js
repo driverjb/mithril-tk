@@ -76,7 +76,7 @@ export class Field {
    * @returns {boolean}
    */
   get requiresValidation() {
-    return this._validator === undefined;
+    return this._validator !== undefined;
   }
 }
 
