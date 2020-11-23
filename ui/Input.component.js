@@ -8,7 +8,7 @@ export const Input = {
       oninput: ({ target: { value } }) => (field.value = value),
       class: `${
         field.requiresValidation ? (field.isValid ? field.successClass : field.failClass) : ''
-      } ${attrs.class}${fail ? ` ${field.failClass}` : ''}`,
+      } ${attrs.class}${attrs.fail ? ` ${field.failClass}` : ''}`,
       placeholder: field.name,
       value: field.value,
       ...attrs
