@@ -23,10 +23,13 @@ export class Field {
     this._name = opt.name || '';
     /** @private */
     this._validator = opt.validator;
+    this._asnycValidator = opt.asyncValidator;
     /** @private */
     this._failClass = opt.failClass;
     /** @private */
     this._successClass = opt.successClass;
+    /** @private */
+    this._validState = true;
   }
   /**
    * Get the value of the field
@@ -68,15 +71,19 @@ export class Field {
    * @returns {boolean}
    */
   get isValid() {
-    if (this._validator) return this._validator(this._value);
-    else return true;
+    return this._validState;
+  }
+  async validate() {
+    if (this._validator) this._validState = this._validator(this._value);
+    else if (this._asnycValidator) this._validState = await this._asnycValidator(this._value);
+    else this._validState = true;
   }
   /**
    * True if a validator is set, false it not.
    * @returns {boolean}
    */
   get requiresValidation() {
-    return this._validator !== undefined;
+    return this._validator !== undefined || this._asnycValidator !== undefined;
   }
 }
 
