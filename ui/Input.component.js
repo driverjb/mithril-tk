@@ -4,7 +4,6 @@ export const Input = {
   view: ({ attrs }) => {
     /** @type {import('../util/Field.class').Field} */
     let field = attrs.field;
-    console.log('view', field.name);
     let cls = attrs.class;
     delete attrs.class;
     return m('input', {
