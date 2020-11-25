@@ -29,7 +29,8 @@ export class Field {
     /** @private */
     this._successClass = opt.successClass;
     /** @private */
-    this._validState = true;
+    this._validState = false;
+    this.validate();
   }
   /**
    * Get the value of the field
